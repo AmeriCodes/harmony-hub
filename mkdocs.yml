@@ -1,0 +1,16 @@
+site_name: Harmony Hub
+repo_url: https://github.com/AmeriCodes/harmony-hub
+repo_name: AmeriCodes/harmony-hub
+edit_uri: tree/main/docs
+
+theme:
+  name: material
+  logo: assets/keyboard.png
+  favicon: assets/keyboard.png
+
+
+markdown_extensions:
+  - attr_list
+
+extra_css:
+  - stylesheets/extra.css
