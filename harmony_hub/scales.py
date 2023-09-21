@@ -19,10 +19,10 @@ def scales(tonic: str, mode: str) -> dict[str, list[str]]:
 
     Examples:
         >>> scales('C', 'major')
-            {'notes':['C', 'D', 'E', 'F', 'G', 'A', 'B'],'degrees': ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII']}
+        {'notes': ['C', 'D', 'E', 'F', 'G', 'A', 'B'], 'degrees': ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII']}
 
         >>> scales('A', 'minor')
-            {'notes':['A', 'B', 'C', 'D', 'E', 'F', 'G'],'degrees': ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII']}
+        {'notes': ['A', 'B', 'C', 'D', 'E', 'F', 'G'], 'degrees': ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII']}
     """
     intervals = SCALES[mode]
     tonic_pos = NOTES.index(tonic)
@@ -30,8 +30,8 @@ def scales(tonic: str, mode: str) -> dict[str, list[str]]:
     temp = []
 
     for interval in intervals:
-        note = tonic_pos + interval % 12
-        temp.append(NOTES[interval])
+        note = (tonic_pos + interval) % 12
+        temp.append(NOTES[note])
 
     return {
         'notes': temp,
