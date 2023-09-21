@@ -5,7 +5,7 @@ SCALES = {
 }
 
 
-def scales(tonic: str, mode: str) -> dict[str, list[str]]:
+def scale(tonic: str, mode: str) -> dict[str, list[str]]:
     """
     Generates a scale from a tonic and a mode.
 
@@ -17,15 +17,30 @@ def scales(tonic: str, mode: str) -> dict[str, list[str]]:
     Returns:
         A dictionary with scale notes and degrees.
 
+    Raises:
+        ValueError: If the tonic is not valid note.
+        KeyError: If the scale does not exist or has not been implemented.
+
     Examples:
-        >>> scales('C', 'major')
+        >>> scale('C', 'major')
         {'notes': ['C', 'D', 'E', 'F', 'G', 'A', 'B'], 'degrees': ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII']}
 
-        >>> scales('A', 'minor')
+        >>> scale('a', 'minor')
         {'notes': ['A', 'B', 'C', 'D', 'E', 'F', 'G'], 'degrees': ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII']}
     """
-    intervals = SCALES[mode]
-    tonic_pos = NOTES.index(tonic)
+    tonic = tonic.capitalize()
+    try:
+        intervals = SCALES[mode]
+        tonic_pos = NOTES.index(tonic)
+    except ValueError:
+        raise ValueError(
+            f'This tonic does not exist, try one of these {NOTES}.'
+        )
+    except KeyError:
+        raise KeyError(
+            'This mode does not exist or has not been implemented. '
+            f'try one of these {list(SCALES.keys())}.'
+        )
 
     temp = []
 
