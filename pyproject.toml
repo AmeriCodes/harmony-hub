@@ -6,6 +6,9 @@ authors = ["AmeriCodes <mateus-americo@live.com>"]
 readme = "README.md"
 packages = [{include = "harmony_hub"}]
 
+[tool.poetry.scripts]
+scales = "harmony_hub.cli:app"
+
 [tool.poetry.dependencies]
 python = "^3.11"
 typer = "^0.9.0"
