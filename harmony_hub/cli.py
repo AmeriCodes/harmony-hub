@@ -10,8 +10,8 @@ app = Typer()
 
 @app.command()
 def scales(
-    tonic: str =Argument('c', help='Tonic of the scale'),
-    mode: str =Argument('major', help='Scale character'),
+    tonic: str = Argument('c', help='Tonic of the scale'),
+    mode: str = Argument('major', help='Scale character'),
 ):
     table = Table()
     notes, degrees = scale(tonic, mode).values()
