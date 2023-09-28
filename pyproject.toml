@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "harmony_hub"}]
 
 [tool.poetry.scripts]
-scales = "harmony_hub.cli:app"
+harmony-hub = "harmony_hub.cli:app"
 
 [tool.poetry.dependencies]
 python = "^3.11"
