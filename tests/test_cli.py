@@ -36,6 +36,18 @@ def test_cli_chords_must_contain_the_notes_in_the_response(note):
 
 
 @mark.parametrize('degree', ['I', 'III', 'V'])
-def test_cli_chords_must_contain_the_notes_in_the_response(degree):
+def test_cli_chords_must_contain_the_all_degrees(degree):
     result = runner.invoke(app, ['chord'])
+    assert degree in result.stdout
+
+
+@mark.parametrize('cipher', ['C', 'Dm', 'Em', 'F', 'G', 'Am', 'Bº'])
+def test_cli_harmonic_field_must_contain_the_all_degrees(cipher):
+    result = runner.invoke(app, ['harmonic-field', 'C'])
+    assert cipher in result.stdout
+
+
+@mark.parametrize('degree', ['I', 'ii', 'iii', 'IV', 'V', 'vi', 'viiº'])
+def test_cli_harmonic_field_must_contain_the_all_degrees(degree):
+    result = runner.invoke(app, ['harmonic-field', 'C'])
     assert degree in result.stdout

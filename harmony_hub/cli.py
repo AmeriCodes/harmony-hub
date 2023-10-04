@@ -3,6 +3,7 @@ from rich.table import Table
 from typer import Argument, Typer
 
 from harmony_hub.chords import chord as _chord
+from harmony_hub.harmonic_field import harmonic_field as _harmonic_field
 from harmony_hub.scales import scale as _scale
 
 console = Console()
@@ -37,5 +38,22 @@ def chord(
         table.add_column(degree)
 
     table.add_row(*notes)
+
+    console.print(table)
+
+
+@app.command()
+def harmonic_field(
+    root: str = Argument('c', help='Root of the harmonic field'),
+    mode: str = Argument('major', help='Mode of the harmonic field'),
+):
+    table = Table()
+
+    chords, degrees = _harmonic_field(root, mode).values()
+
+    for degree in degrees:
+        table.add_column(degree)
+
+    table.add_row(*chords)
 
     console.print(table)
