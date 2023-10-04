@@ -81,7 +81,57 @@ poetry run harmony-hub chord C+
 ```
 By the time you use major, minor, diminished and augmented chords
 
+## Harmonic Field
 
+You can call harmonic fields via the `harmonic-field` subcommand. For example:
+
+```bash
+poetry run harmonic-field
+
+┏━━━┳━━━━┳━━━━━┳━━━━┳━━━┳━━━━┳━━━━━━┓
+┃ I ┃ ii ┃ iii ┃ IV ┃ V ┃ vi ┃ vii° ┃
+┡━━━╇━━━━╇━━━━━╇━━━━╇━━━╇━━━━╇━━━━━━┩
+│ C │ Dm │ Em  │ F  │ G │ Am │ B°   │
+└───┴────┴─────┴────┴───┴────┴──────┘
+```
+
+By default, the parameters used are the tonic of `C` and the `major` harmonic field.
+
+### Changes in harmonic fields
+
+You can change the root and key parameters.
+
+```bash
+poetry run harmonic-field [TONE] [TONE]
+```
+
+#### Change in field tonic
+
+An example with the harmonic field of `E`:
+
+```bash
+poetry run harmonic-field E
+
+┏━━━┳━━━━━┳━━━━━┳━━━━┳━━━┳━━━━━┳━━━━━━┓
+┃ I ┃ ii  ┃ iii ┃ IV ┃ V ┃ vi  ┃ vii° ┃
+┡━━━╇━━━━━╇━━━━━╇━━━━╇━━━╇━━━━━╇━━━━━━┩
+│ E │ F#m │ G#m │ A  │ B │ C#m │ D#°  │
+└───┴─────┴─────┴────┴───┴─────┴──────┘
+```
+
+#### Changing the field tone
+
+An example using the harmonic field of `E` in the `minor` key:
+
+```bash
+poetry run harmonic-field E minor
+
+┏━━━━┳━━━━━┳━━━━━┳━━━━┳━━━━┳━━━━┳━━━━━┓
+┃ i  ┃ ii° ┃ III ┃ iv ┃ v  ┃ VI ┃ VII ┃
+┡━━━━╇━━━━━╇━━━━━╇━━━━╇━━━━╇━━━━╇━━━━━┩
+│ Em │ F#° │ G   │ Am │ Bm │ C  │ D   │
+└────┴─────┴─────┴────┴────┴────┴─────┘
+```
 
 ## More information about the CLI
 
@@ -104,9 +154,27 @@ poetry run harmony-hub --help
 │ --help                                               Show this message and   │
 │                                                      exit.                   │
 ╰──────────────────────────────────────────────────────────────────────────────╯
-╭─ Commands ───────────────────────────────────────────────────────────────────╮
-│ chord                                                                        │
-│ scale                                                                        │
-╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ───────────────────────────────────────────────────────────────────────────╮
+│ chord                                                                                │
+│ harmonic-field                                                                       │
+│ scale                                                                                │
+╰──────────────────────────────────────────────────────────────────────────────────────╯
+```
 
+### More information about subcommands
+
+Information about subcommands can be accessed by using the `--help` flag after the parameter name. An example of using `help` in harmonic fields:
+
+```bash
+poetry run harmony-hub harmonic-field --help
+
+ Usage: harmony-hub harmonic-field [OPTIONS] [ROOT] [MODE]
+
+╭─ Arguments ──────────────────────────────────────────────────────────────────────────╮
+│   root      [ROOT]  Root of the harmonic field [default: c]                          │
+│   mode      [MODE]  Mode of the harmonic field [default: major]                      │
+╰──────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────────────╮
+│ --help          Show this message and exit.                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────╯
 ```
